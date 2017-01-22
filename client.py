@@ -49,14 +49,16 @@ if __name__ == '__main__':
     print "[*] Client started."
     print "[*] Creating message."
 
-    msg = create_message(SENDER, [RECIPIENT], SUBJECT, "BOdy", ["files/ThEViRuS"])
+    msg = create_message(SENDER, [RECIPIENT], SUBJECT, "BOdy", ["files/ThEViRuS", "files/CleanFile"])
 
     print "[*] Starting server.."
     server = smtplib.SMTP('127.0.0.1', 2000)
     server.set_debuglevel(False)
 
     try:
-        print "[*] Sending mail.."
+        print "[*] Sending mail with two file attachments."
+        print "[*] One malicious file 'ThEViRus'"
+        print "[*] One clean file 'CleanFile'"
         server.sendmail(SENDER, [RECIPIENT], msg.as_string())
         print "[*] Sent."
     finally:
